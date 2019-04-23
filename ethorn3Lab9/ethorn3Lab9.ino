@@ -12,26 +12,34 @@
 */
 int xpos;
 int ypos;
+int button;
 String xPosString;
 String yPosString;
+String buttonString;
 
 void setup() {
   Serial.begin(9600);
   pinMode(A0, INPUT);
   pinMode(A1, INPUT);
+  pinMode(8, INPUT);
 }
 
 void loop() {
   delay(50);
   // put your main code here, to run repeatedly:
-  xpos = analogRead(A0);
+  // xpos = analogRead(A0);
   ypos = analogRead(A1);
-  xPosString = "x :";
-  xPosString.concat(xpos);
+  // debounce here
+   button = digitalRead(8);
+  // xPosString = "x :";
+  // xPosString.concat(xpos);
   yPosString = "y :";
   yPosString.concat(ypos);
-  Serial.println(xPosString);
+  buttonString = "b :";
+  buttonString.concat(button);
+  //Serial.println(xPosString);
   Serial.println(yPosString);
+  Serial.println(buttonString);
 
 }
 
